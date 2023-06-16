@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <h1 class="heading">PROMISE, ASYNC & AWAIT</h1>
+    <hr>
+    <div class="maincontainer">
+        <div class="container">
+            <div class="question">
+                Q.1	Write one example explaining how you can write a callback function.
+            </div>
+            <div class="answer">
+                <pre class="code">
+                    function calculate(num1, num2){
+                        return num1 * num2
+                    }
+                    
+                    function displayDate(name, age){
+                        console.log(`${name} : age is ${age}`)
+                    }
+                    
+                    displayDate("Yajat", calculate(22,1));
+                </pre>
+                <p class="answer1"></p>
+            </div>
+        </div>
+        <hr>
+
+        <div class="container">
+            <div class="question">
+                Q.2	Write a callback function to print numbers from 1 to 7, in which 1 should be printed after 1 sec, 2 should be printed after 2 sec, 3 should be printed after 3 sec, and so on. 
+
+                Explain callback hell.
+                Numbers
+                1
+                2
+                3
+                4
+                5
+                6
+                7
+            </div>
+            <div class="answer">
+                <pre class="code"> 
+                    setTimeout(() => {
+                        console.log(1);
+                        setTimeout(() => {
+                        console.log(2);
+                        setTimeout(() => {
+                            console.log(3);
+                            setTimeout(() => {
+                            console.log(4);
+                            setTimeout(() => {
+                                console.log(5) 
+                                setTimeout(() => {
+                                console.log(6)
+                                setTimeout(() => {
+                                    console.log(7) 
+                                }, 7000);
+                                }, 6000);
+                            }, 5000);
+                            }, 4000); 
+                        }, 3000);
+                        }, 2000); 
+                    }, 1000);
+                </pre>
+                <p class="answer2"></p>
+            </div>
+        </div>
+        <hr>
+
+        <div class="container">
+            <div class="question">
+                Q.3	Write the promise function to print numbers from 1 to 7, in which 1 should be printed after 1 sec, 2 should be printed after 2 sec, 3 should be printed after 3 sec, and so on. 
+                Numbers
+                1
+                2
+                3
+                4
+                5
+                6
+                7
+            </div>
+            <div class="answer">
+                <pre class="code">
+                  function promisechain(alpha,timeout){
+                    return new Promise((res,rej)=>{
+                        setTimeout(()=>{
+                        console.log(alpha);
+                        res("The promise is resolved !!!...")
+                        },timeout)
+                    })
+                  }
+                  function visible(){
+                    promisechain("1",1000)
+                    .then(()=>promisechain("2",2000"))
+                    .then(()=>promisechain("3",3000")) 
+                     .then(()=>promisechain("4",4000"))
+                     .then(()=>promisechain("5",5000"))
+                     .then(()=>promisechain("6",6000"))
+                     .then(()=>promisechain("7",7000"))
+                  }
+                  visible();
+                </pre>
+                <p class="answer3"></p>
+            </div>
+        </div>
+        <hr>
+
+        <div class="container">
+            <div class="question">
+                Q.4	 Create a promise function accepting an argument, if yes is passed to the function then it should go to resolved state and print Promise Resolved, and if nothing is passed 
+                then it should go to reject the state and catch the error and print Promise Rejected 
+            </div>
+            <div class="answer">
+                <pre class="code">
+                    let variable=true
+                    function promisefun(){
+                    return new Promise ((res,rej)=>{
+                        if(variable){
+                            res("promise resolved succesfully...")
+                        }
+                        else{
+                            rej(Error("Promise Rejected!!!"))
+                        }
+                    })
+                    }
+                    promisefun(variable).then((data)=>{
+                    console.log(data);
+                    answer4.innerHTML=data
+                    }).catch((err)=>{
+                    console.log(err);
+                    })
+                </pre>
+                <p class="answer4"></p>
+            </div>
+        </div>
+        <hr>
+
+        <div class="container">
+            <div class="question">
+                Q. 5 Create examples to explain callback function
+            </div>
+            <div class="answer">
+                <pre class="code">
+                    function divide(num1, num2, callback) {
+                        let output = num1 / num2;
+                        callback(output);
+                        }
+                              
+                        function division(output) {
+                        console.log('The result is: ' + output);
+                        answer5.innerHTML = " This result is " + output
+                        }
+                              
+                     divide(200, 100,  division);                     
+                </pre>
+                <p class="answer5"></p>
+            </div>
+        </div>
+        <hr>
+
+        <div class="container">
+            <div class="question">
+                Q. 6 Create examples to explain callback hell function
+            </div>
+            <div class="answer">
+                <pre class="code">
+                    setTimeout(()=>{
+                        console.log("1")
+                        setTimeout(()=>{
+                            console.log("2")
+                            setTimeout(()=>{
+                                console.log("3");
+                                setTimeout(()=>{
+                                    console.log("4");
+                                    setTimeout(()=>{
+                                        console.log("5");
+                                        setTimeout(()=>{
+                                            console.log("6");
+                                            setTimeout(()=>{
+                                                console.log("7")
+                                            },7000)
+                                        },6000)
+                                    },5000)
+                                },4000)
+                            },3000)
+                        },2000)
+                    },1000)                  
+                </pre>
+                <p class="answer6"></p>
+            </div>
+        </div>
+        <hr>
+
+        <div class="container">
+            <div class="question">
+                Q. 7 Create examples to explain promises function
+            </div>
+            <div class="answer">
+                <pre class="code">
+                    function findsum(num1,num2){
+                        let pr=new Promise((res,rej)=>{
+                           setTimeout(() => {
+                              let sum=num1+num2;
+                              if(isNaN(sum)){
+                                 rej("Try again! Enter a valid number");
+                              }else{
+                                 res(sum);
+                              }
+                           },2000);
+                        })
+                        return pr;
+                     }
+                     findsum(12,24).then((ans)=>{
+                        console.log(sum);
+                     }).catch((err)=>{
+                        console.log(err);
+                     })                   
+                </pre>
+                <p class="answer7"></p>
+            </div>
+        </div>
+        <hr>
+
+
+        <div class="container">
+            <div class="question">
+                Q. 8 Create examples to explain async await function
+            </div>
+            <div class="answer">
+                <pre class="code">
+                    function fetchData() {
+                        return new Promise(resolve => {
+                          setTimeout(() => resolve('Data received!'), 2000);
+                        });
+                      }
+                      
+                      async function printData() {
+                        console.log("Fetching data...");
+                        const data = await fetchData();
+                        console.log(data);
+                      }
+                      
+                      printData();          
+                </pre>
+                <p class="answer8"></p>
+            </div>
+        </div>
+        <hr>
+
+        <div class="container">
+            <div class="question">
+                Q. 9 Create examples to explain promise.all function
+            </div>
+            <div class="answer">
+                <pre class="code">
+                    function myprom(num){
+                        return new Promise((res,rej)=>{
+                           if(num%2==0){
+                              res("This is even")
+                           }
+                           else{
+                              rej("This is odd")
+                           }
+                        })
+                     }
+                     
+                     const prom1=new Promise((res,rej)=>{
+                        if(true){
+                           res("Hi EAC-01 BATCH")
+                        }else{
+                           rej("Sorry")
+                        }
+                     })
+                     Promise.all([myprom[10],prom1]).then((data)=>{
+                        console.log(data);
+                        answer9.innerHTML=data;
+                     }).catch((data)=>{
+                        console.log(data);
+                        answer9.innerHTML=data;                       
+                </pre>
+                <p class="answer9"></p>
+            </div>
+        </div>
+        <hr>
+
+        
+    </div>
+    <script src="./script.js"></script>
+</body>
+</html>

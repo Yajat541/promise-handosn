@@ -1,0 +1,40 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: azure;
+}
+h1{
+    margin-bottom: 20px;
+    background-color: coral;
+}
+.heading{
+    margin-top: 20px;
+    font-size: 30px;
+    text-align: center;
+    color: black;
+}
+.maincontainer{
+    margin-left: 50px;
+    margin-right: 50px;
+}
+hr{
+    background-color: grey;
+    height: 4px;
+    width: 100%;
+    margin-top: 20px;
+}
+.container{
+    font-weight: 800;
+    margin-top: 30px;
+}
+.code{
+    color: blue;
+    font-size: 15px;
+}
+.answer{
+    color: red;
+}
+
